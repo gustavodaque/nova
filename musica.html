@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Música - Vibetrack</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ff9800;
+            background-color: #202020;
+            color: white;
+        }
+
+        button {
+            background-color: #ff9800;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e57a00;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Cadastrar Música</h1>
+        <form id="musicForm">
+            <input type="text" id="artistName" placeholder="Nome do Artista" required>
+            <input type="text" id="songName" placeholder="Nome da Música" required>
+            <input type="url" id="songLink" placeholder="Link do YouTube" required>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('musicForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const artistName = document.getElementById('artistName').value;
+            const songName = document.getElementById('songName').value;
+            const songLink = document.getElementById('songLink').value;
+
+            if (!artistName || !songName || !songLink) {
+                alert("Por favor, preencha todos os campos.");
+                return;
+            }
+
+            const song = {
+                artistName: artistName,
+                songName: songName,
+                link: songLink
+            };
+
+            let playlist = JSON.parse(localStorage.getItem('playlist')) || [];
+
+            playlist.push(song);
+
+            localStorage.setItem('playlist', JSON.stringify(playlist));
+
+            window.location.href = 'home.html';
+        });
+    </script>
+</body>
+</html>

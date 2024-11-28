@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Vibetrack</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .profile-container {
+            background-color: #202020;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+            width: 350px;
+            text-align: center;
+        }
+
+        .profile-container h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #f5f5f5;
+        }
+
+        .profile-info {
+            margin: 20px 0;
+        }
+
+        .profile-info p {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #f5f5f5;
+        }
+
+        .back-btn {
+            background-color: #ff9800;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background-color: #19e0d0;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h1>Meu Perfil</h1>
+        <div class="profile-info">
+            <p><strong>Usuário:</strong> <span id="usernameDisplay">Carregando...</span></p>
+            <p><strong>Senha:</strong> <span id="passwordDisplay">Carregando...</span></p>
+        </div>
+        <a href="home.html" class="back-btn">Voltar para Home</a>
+    </div>
+
+    <script>
+        const username = localStorage.getItem('username');
+        const password = localStorage.getItem('password');
+
+        document.getElementById('usernameDisplay').textContent = username || "Não encontrado";
+        document.getElementById('passwordDisplay').textContent = password || "Não encontrado";
+    </script>
+</body>
+</html>
